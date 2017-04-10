@@ -7,13 +7,19 @@ function loadData() {
     var $nytElem = $('#nytimes-articles');
     var $greeting = $('#greeting');
 
-    // clear out old data before new request
+    // Clear out old data before new request
     $wikiElem.text("");
     $nytElem.text("");
 
-    // load streetview
+    // Load street view image
+    var street = $('#street').val();
+    var city = $('#city').val();
+    var address = street + ', ' + city;
 
-    // YOUR CODE GOES HERE!
+    $greeting.text('So, you want to live at ' + address + '?');
+
+    var streetViewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address;
+    $body.append('<img class="bgimg" src="' + streetViewUrl + '">');
 
     return false;
 }
