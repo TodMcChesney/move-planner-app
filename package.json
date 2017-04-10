@@ -1,0 +1,23 @@
+{
+  "name": "move-planner-app-dev-tools",
+  "version": "1.0.0",
+  "description": "Dev tools for Move Planner App.",
+  "main": "index.html",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "Tod McChesney",
+  "license": "ISC",
+  "bugs": {
+    "url": "none"
+  },
+  "homepage": "none",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1"
+  }
+}
