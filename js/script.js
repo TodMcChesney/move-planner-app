@@ -44,6 +44,9 @@ function loadData() {
 
     // Wikipedia API AJAX request
     var wikiUrl = 'https://en.wikipedia.org/w/api.php';
+    var wikiRequestTimeout = setTimeout(function() {
+        $wikiElem.text('Failed to get Wikipedia resources');
+    }, 8000);
 
     $.ajax({
         url: wikiUrl,
@@ -62,6 +65,7 @@ function loadData() {
                 linkUrl = linkList[3][i];
                 $wikiElem.append('<li><a href="' + linkUrl + '" rel target="_blank">' + linkText + '</a>');
             }
+            clearTimeout(wikiRequestTimeout);
         }
     });
 
