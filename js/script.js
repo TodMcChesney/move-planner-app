@@ -21,12 +21,11 @@ function loadData() {
     var streetViewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address;
     $body.append('<img class="bgimg" src="' + streetViewUrl + '">');
 
-    // NYTimes AJAX request
-    var newsUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-    newsUrl += '?' + $.param({
-        'api-key': 'cedb5e972a1a43a6adced466e7cc08ee',
-        'q': city,
-        'fl': 'headline,snippet,web_url'
+    // NYTimes API AJAX request
+    var newsUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?' + 'api-key=cedb5e972a1a43a6adced466e7cc08ee' + '&';
+    newsUrl += $.param({
+        q: city,
+        fl: 'headline,snippet,web_url'
     });
 
     $.getJSON(newsUrl, function (data) {
