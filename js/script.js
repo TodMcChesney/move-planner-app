@@ -26,16 +26,19 @@ function loadData() {
     newsUrl += '?' + $.param({
         'api-key': 'cedb5e972a1a43a6adced466e7cc08ee',
         'q': city,
-        'fl': 'headline,lead_paragraph,web_url'
-    });
-    $.getJSON(newsUrl, function (data) {
-        var articles = data.response.docs;
-        for (var i = 0; i < articles.length; i++) {
-            var article = articles[i];
-            $('#nytimes-articles').append('<li><a href="' + article.web_url + '">' + article.headline.main + '</a><p>' + article.lead_paragraph + '</p></li>');
-        }
+        'fl': 'headline,snippet,web_url'
     });
 
+    $.getJSON(newsUrl, function (data) {
+        $nytHeaderElem.text('New York Times Articles About ' + city);
+
+        var articles = data.response.docs;
+
+        for (var i = 0; i < articles.length; i++) {
+            var article = articles[i];
+            $nytElem.append('<li><a href="' + article.web_url + '">' + article.headline.main + '</a><p>' + article.snippet + '</p></li>');
+        }
+    });
 
     return false;
 }
