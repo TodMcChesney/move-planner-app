@@ -32,10 +32,10 @@ function loadData() {
         $nytHeaderElem.text('New York Times Articles About ' + city);
 
         var articles = data.response.docs;
-
+        var article;
         for (var i = 0; i < articles.length; i++) {
-            var article = articles[i];
-            $nytElem.append('<li><a href="' + article.web_url + '">' + article.headline.main + '</a><p>' + article.snippet + '</p></li>');
+            article = articles[i];
+            $nytElem.append('<li><a href="' + article.web_url + '" rel target="_blank">' + article.headline.main + '</a><p>' + article.snippet + '</p></li>');
         }
     })
     .fail(function () {
