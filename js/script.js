@@ -53,8 +53,15 @@ function loadData() {
             format: 'json'
         },
         dataType: 'jsonp',
-        success: function (response) {
-            console.log(response);
+        success: function (data) {
+            var linkList = data;
+            var linkText;
+            var linkUrl;
+            for (var i = 0; i < linkList[1].length; i ++) {
+                linkText = linkList[1][i];
+                linkUrl = linkList[3][i];
+                $wikiElem.append('<li><a href="' + linkUrl + '" rel target="_blank">' + linkText + '</a>');
+            }
         }
     });
 
