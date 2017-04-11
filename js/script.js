@@ -43,6 +43,22 @@ function loadData() {
         $nytHeaderElem.text('New Your Times Articles Could Not Be Loaded');
     });
 
+    // Wikipedia API AJAX request
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php';
+
+    $.ajax({
+        url: wikiUrl,
+        data: {
+            action: 'opensearch',
+            search: city,
+            format: 'json'
+        },
+        dataType: 'jsonp',
+        success: function (response) {
+            console.log(response);
+        }
+    });
+
     return false;
 }
 
