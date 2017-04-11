@@ -22,14 +22,18 @@ function loadData() {
     $body.append('<img class="bgimg" src="' + streetViewUrl + '">');
 
     // NYTimes AJAX request
-    var url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-    url += '?' + $.param({
+    var newsUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+    newsUrl += '?' + $.param({
         'api-key': 'cedb5e972a1a43a6adced466e7cc08ee',
         'q': city,
         'fl': 'headline,lead_paragraph,web_url'
     });
-    $.getJSON(url, function (data) {
-        console.log(data);
+    $.getJSON(newsUrl, function (data) {
+        var articles = data.response.docs;
+        for (var i = 0; i < articles.length; i++) {
+            var article = articles[i];
+            $('#nytimes-articles').append('<li><a href="' + article.web_url + '">' + article.headline.main + '</a><p>' + article.lead_paragraph + '</p></li>');
+        }
     });
 
 
