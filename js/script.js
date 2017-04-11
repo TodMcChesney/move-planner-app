@@ -38,6 +38,9 @@ function loadData() {
             var article = articles[i];
             $nytElem.append('<li><a href="' + article.web_url + '">' + article.headline.main + '</a><p>' + article.snippet + '</p></li>');
         }
+    })
+    .fail(function () {
+        $nytHeaderElem.text('New Your Times Articles Could Not Be Loaded');
     });
 
     return false;
